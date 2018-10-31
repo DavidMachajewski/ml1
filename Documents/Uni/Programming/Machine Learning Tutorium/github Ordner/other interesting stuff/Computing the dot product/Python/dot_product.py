@@ -34,8 +34,8 @@ def test_dot_product_numpy(n):
 	
 from timeit import timeit
 setup = 'from __main__ import test_dot_product_iterative,test_dot_product_recursive,test_dot_product_numpy, n ; import numpy as np'
-num = 4000 #set num=40 for comparison with C++
-n= 900#set n=1000000 for comparison with C++
+num = 40 #set num=40 for comparison with C++
+n= 1900#set n=1000000 for comparison with C++
 t1 = timeit('test_dot_product_iterative(n)', setup=setup, number=num)
 t2 = timeit('test_dot_product_recursive(n)', setup=setup, number=num)
 t3 = timeit('test_dot_product_numpy(n)', setup=setup, number=num)
