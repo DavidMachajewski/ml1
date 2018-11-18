@@ -52,7 +52,7 @@ def runLassoRegressionPoly(data,test_range):
 	##Generiere noisebehaftete Datensätze
 	mu=0.0
 	sigma=0.3
-	basis_functions=5 #Anzahl der Basisfunktionren
+	basis_functions=10 #Anzahl der Basisfunktionren
 	regularizer=1#regularizer
 
 	##Generierung unserer Polynomkoeffizienten
@@ -116,6 +116,6 @@ def runPredictiveDist(data, test_range):
 		
 plotProdNumbers(prodNumbers)
 #runLassoRegressionExp(prodNumbers,np.linspace(0,8,20))
-#runLassoRegressionPoly(prodNumbers,np.linspace(0,15,20))
+#runLassoRegressionPoly(prodNumbers,np.linspace(0,10,30))
 runPredictiveDist(prodNumbers,np.linspace(0,5,200))
 plt.show()
