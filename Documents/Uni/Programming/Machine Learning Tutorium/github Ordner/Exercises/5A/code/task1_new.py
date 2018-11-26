@@ -96,7 +96,7 @@ def plotlikelihood(x_s,t_s,s):
 		for i in range(len(x_s)):
 			sum=sum+(t_s[i]-w_1*x_s[i]-w_0)**2
 		#print(sum)
-		return sum
+		return np.exp(-0.5*sum)
 	
 
 	#plt.subplot(s)
@@ -175,7 +175,6 @@ def plotAll():
 	(x,y,rv,pos)=plotposterior(sample_range[0:2],data[0:2],2)	
 	ax[1,1].contourf(x, y, rv.pdf(pos))
 	ax[1,2].plot(sample_range[0:2],data[0:2],linestyle=" ",marker="o", color="r")
-	ax[1,2].set_title("Data")
 
 	#20th datapoint
 	(x,y,z)=plotlikelihood(sample_range[0:20],data[0:20],3)	
@@ -185,7 +184,6 @@ def plotAll():
 	(x,y,rv,pos)=plotposterior(sample_range[0:20],data[0:20],2)	
 	ax[2,1].contourf(x, y, rv.pdf(pos))
 	ax[2,2].plot(sample_range[0:20],data[0:20],linestyle=" ",marker="o", color="r")
-	ax[2,2].set_title("Data")	
 	
 	plt.show()
 	
