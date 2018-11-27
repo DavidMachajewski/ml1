@@ -147,7 +147,7 @@ def plotlikelihood(x_s,t_s,s):
 
 
 
-def plotAll():
+def plotLikelihoodAll():
 	radius = [coefficients[0]]
 	square = [coefficients[1]]
 	x=range(9)
@@ -187,4 +187,87 @@ def plotAll():
 	
 	plt.show()
 	
-plotAll()
+def plotSingleLikelihoodAll():
+	radius = [coefficients[0]]
+	square = [coefficients[1]]
+	x=range(9)
+	y=range(9)
+	fig, ax = plt.subplots(3, 3,sharex=True, sharey=True)
+	ax[0,0].set_title("Single Likelihood")
+	#ax[0,0].axes().set_aspect('equal', 'box')
+	(x,y,z)=plotlikelihood(sample_range[0:1],data[0:1],3)	
+	ax[0,0].imshow(z, extent=(np.amin(x), np.amax(x), np.amin(y), np.amax(y)),
+	cmap=cm.hot)
+	ax[0,0].plot(radius, square, marker='+', linestyle='--', color='r', label='Square') 
+	ax[0,0].set_ylabel('w1')
+	ax[0,0].set_xlabel('w0')	
+	(x,y,rv,pos)=plotposterior(sample_range[0:1],data[0:1],2)	
+	ax[0,1].contourf(x, y, rv.pdf(pos))
+	ax[0,1].set_title("Posterior")
+	ax[0,2].plot(sample_range[0:1],data[0:1],linestyle=" ",marker="o", color="r")
+	ax[0,2].set_title("Data")
+	
+	#second datapoint
+	(x,y,z)=plotlikelihood(sample_range[1:2],data[1:2],3)	
+	ax[1,0].imshow(z, extent=(np.amin(x), np.amax(x), np.amin(y), np.amax(y)),
+	cmap=cm.hot)
+	ax[1,0].plot(radius, square, marker='+', linestyle='--', color='r', label='Square') 
+	(x,y,rv,pos)=plotposterior(sample_range[0:2],data[0:2],2)	
+	ax[1,1].contourf(x, y, rv.pdf(pos))
+	ax[1,2].plot(sample_range[0:2],data[0:2],linestyle=" ",marker="o", color="r")
+
+	#20th datapoint
+	(x,y,z)=plotlikelihood(sample_range[18:19],data[18:19],3)	
+	ax[2,0].imshow(z, extent=(np.amin(x), np.amax(x), np.amin(y), np.amax(y)),
+	cmap=cm.hot)
+	ax[2,0].plot(radius, square, marker='+', linestyle='--', color='r', label='Square') 
+	(x,y,rv,pos)=plotposterior(sample_range[0:20],data[0:20],2)	
+	ax[2,1].contourf(x, y, rv.pdf(pos))
+	ax[2,2].plot(sample_range[0:20],data[0:20],linestyle=" ",marker="o", color="r")
+	
+	plt.show()
+	
+def plotQuiz():
+	radius = [coefficients[0]]
+	square = [coefficients[1]]
+	x=range(9)
+	y=range(9)
+	fig, ax = plt.subplots(3, 3,sharex=True, sharey=True)
+	ax[0,0].set_title("Single Likelihood")
+	#ax[0,0].axes().set_aspect('equal', 'box')
+	(x,y,z)=plotlikelihood(sample_range[0:1],data[0:1],3)	
+	ax[0,0].imshow(z, extent=(np.amin(x), np.amax(x), np.amin(y), np.amax(y)),
+	cmap=cm.hot)
+	ax[0,0].set_ylabel('w1')
+	ax[0,0].set_xlabel('w0')		
+	(x,y,z)=plotlikelihood(sample_range[0:1],data[0:1],3)
+	ax[0,1].imshow(z, extent=(np.amin(x), np.amax(x), np.amin(y), np.amax(y)),
+	cmap=cm.hot)
+	ax[0,1].set_title("Likelihood")
+	ax[0,2].plot(sample_range[0:1],data[0:1],linestyle=" ",marker="o", color="r")
+	ax[0,2].set_title("Data")
+	
+	#second datapoint
+	(x,y,z)=plotlikelihood(sample_range[1:2],data[1:2],3)	
+	ax[1,0].imshow(z, extent=(np.amin(x), np.amax(x), np.amin(y), np.amax(y)),
+	cmap=cm.hot) 
+	(x,y,z)=plotlikelihood(sample_range[0:2],data[0:2],3)
+	ax[1,1].imshow(z, extent=(np.amin(x), np.amax(x), np.amin(y), np.amax(y)),
+	cmap=cm.hot)
+	ax[1,2].plot(sample_range[0:2],data[0:2],linestyle=" ",marker="o", color="r")
+
+	#20th datapoint
+	(x,y,z)=plotlikelihood(sample_range[18:19],data[18:19],3)	
+	ax[2,0].imshow(z, extent=(np.amin(x), np.amax(x), np.amin(y), np.amax(y)),
+	cmap=cm.hot)
+	(x,y,z)=plotlikelihood(sample_range[0:20],data[0:20],3)
+	ax[2,1].imshow(z, extent=(np.amin(x), np.amax(x), np.amin(y), np.amax(y)),
+	cmap=cm.hot)
+	ax[2,2].plot(sample_range[0:20],data[0:20],linestyle=" ",marker="o", color="r")
+	
+	plt.show()
+	
+#plotLikelihoodAll()
+#plotSingleLikelihoodAll()
+
+plotQuiz()
