@@ -267,7 +267,7 @@ def plotQuiz():
 	
 	plt.show()
 	
-#plotLikelihoodAll()
+plotLikelihoodAll()
 #plotSingleLikelihoodAll()
 
-plotQuiz()
+#plotQuiz()
